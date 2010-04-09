@@ -1,0 +1,12 @@
+* text=auto !eol
+/LICENSE -text
+/README -text
+lib/i18n/sfNumberFormatPlus.class.php -text
+lib/validator/i18n/sfValidatorI18nNumber.php -text
+lib/widget/i18n/sfWidgetFormI18nNumber.php -text
+/package.xml -text svneol=unset#text/plain
+test/bin/prove.php -text
+test/bootstrap/functional.php -text
+test/bootstrap/unit.php -text
+test/unit/validator/sfValidatorI18nNumberTest.php -text
+test/unit/widget/sfWidgetFormI18nNumberTest.php -text

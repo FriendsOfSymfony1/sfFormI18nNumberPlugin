@@ -1,0 +1,21 @@
+{
+  "name": "pnz/sf-form-i18n-number-plugin",
+  "type": "symfony1-plugin",
+  "description": "I18n-Number validator and widget for Symfony1",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "oweitman",
+      "email": "oweitman@gmx.de",
+      "role": "Creator"
+    },
+    {
+      "name": "Emanuele Panzeri",
+      "email": "thepanz@gmail.com",
+      "role": "Contributor"
+    }
+  ],
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}

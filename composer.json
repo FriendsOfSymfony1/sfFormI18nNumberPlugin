@@ -1,5 +1,5 @@
 {
-  "name": "pnz/sf-form-i18n-number-plugin",
+  "name": "fos1/sf-form-i18n-number-plugin",
   "type": "symfony1-plugin",
   "description": "I18n-Number validator and widget for Symfony1",
   "license": "MIT",

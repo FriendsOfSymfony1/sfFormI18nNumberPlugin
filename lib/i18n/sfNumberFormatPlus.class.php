@@ -67,7 +67,7 @@ class sfNumberFormatPlus extends sfNumberFormat
    */
   public static function isNumber($input, $culture)
   {
-      $regexs = self::_getRegexForType(sfNumberFormatInfo::DECIMAL, $culture);
+      $regexs = self::getRegexForType(sfNumberFormatInfo::DECIMAL, $culture);
       foreach ($regexs as $regex) {
           preg_match($regex, $input, $found);
           if (isset($found[0])) {
@@ -86,7 +86,7 @@ class sfNumberFormatPlus extends sfNumberFormat
    *
    * @throws sfException
    */
-  private static function _getRegexForType($type, $culture)
+  private static function getRegexForType($type, $culture)
   {
       $num_format = sfNumberFormatInfo::getInstance($culture, $type);
       $pos_pattern = $num_format->getPattern();

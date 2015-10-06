@@ -61,9 +61,9 @@ class sfNumberFormatPlus extends sfNumberFormat
    * Checks if the input contains a normalized or localized number.
    *
    * @param   string  $input    Localized number string
-   * @param   array   $options  Options: locale. See {@link setOptions()} for details.
+   * @param   string  $culture  locale. See {@link setOptions()} for details.
    *
-   * @return  bool           Returns true if a number was found
+   * @return  bool Returns true if a number was found
    */
   public static function isNumber($input, $culture)
   {
@@ -82,7 +82,7 @@ class sfNumberFormatPlus extends sfNumberFormat
    *
    * @param  string $type
    *
-   * @return string
+   * @return array
    *
    * @throws sfException
    */
@@ -93,7 +93,7 @@ class sfNumberFormatPlus extends sfNumberFormat
       $decimal = $pos_pattern['positive'];
       $decimal = preg_replace('/[^#0,;\.\-Ee]/', '', $decimal);
       $patterns = explode(';', $decimal);
-      $regex = null;
+      $regex = array();
 
       if (count($patterns) == 1) {
           $patterns[1] = '-'.$patterns[0];

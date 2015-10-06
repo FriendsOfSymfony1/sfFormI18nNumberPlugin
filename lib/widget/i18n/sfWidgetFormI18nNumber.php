@@ -11,14 +11,13 @@
 /**
  * sfWidgetFormInput represents an HTML input tag.
  *
- * @package    symfony
- * @subpackage widget
  * @author     oweitman
+ *
  * @version    
  */
 class sfWidgetFormI18nNumber extends sfWidgetFormInput
 {
-  /**
+    /**
    * Constructor.
    *
    * Available options:
@@ -32,9 +31,9 @@ class sfWidgetFormI18nNumber extends sfWidgetFormInput
    */
   protected function configure($options = array(), $attributes = array())
   {
-    parent::configure($options, $attributes);
+      parent::configure($options, $attributes);
 
-    $this->addOption('culture', $this->_current_language());
+      $this->addOption('culture', $this->_current_language());
   }
 
   /**
@@ -49,25 +48,21 @@ class sfWidgetFormI18nNumber extends sfWidgetFormInput
    */
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
-    
-    if (is_numeric($value) && !is_null($value))
-    {
-      $numberFormat = new sfNumberFormat($this->getOption('culture'));
-      $value = $numberFormat->format($value);
-    }
-    return parent::render($name,$value,$attributes, $errors);
-      
+      if (is_numeric($value) && !is_null($value)) {
+          $numberFormat = new sfNumberFormat($this->getOption('culture'));
+          $value = $numberFormat->format($value);
+      }
+
+      return parent::render($name, $value, $attributes, $errors);
+
     //return $this->renderTag('input', array_merge(array('type' => $this->getOption('type'), 'name' => $name, 'value' => $value), $attributes));
   }
-  function _current_language()
-  {
-    try 
+    public function _current_language()
     {
-      return sfContext::getInstance()->getUser()->getCulture();
+        try {
+            return sfContext::getInstance()->getUser()->getCulture();
+        } catch (Exception $e) {
+            return sfCultureInfo::getInstance()->getName();
+        }
     }
-    catch (Exception $e)
-    {
-      return sfCultureInfo::getInstance()->getName();
-    }
-  }
 }

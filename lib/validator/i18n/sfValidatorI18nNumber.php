@@ -9,16 +9,15 @@
  */
 
 /**
- * sfValidatorNumber validates a number (integer or float). It also converts the input value to a float.
+ * sfValidatorNumber validates a number (integer or float).
+ * It also converts the input value to a float.
  *
- * @package    symfony
- * @subpackage validator
  * @author     oweitman
- * @version    SVN: $Id$
+ * @author     thePanz
  */
 class sfValidatorI18nNumber extends sfValidatorNumber
 {
-  /**
+    /**
    * Configures the current validator.
    *
    * Available options:
@@ -30,14 +29,13 @@ class sfValidatorI18nNumber extends sfValidatorNumber
    *
    * @see sfValidatorBase
    * @see sfValidatorNumber
-   *    */
+   */
   protected function configure($options = array(), $messages = array())
   {
-    parent::configure($options,$messages);
-    
-    $this->addOption('culture',$this->_current_language());
-    $this->addMessage('format', 'Input has a wrong format: %value%');
-    
+      parent::configure($options, $messages);
+
+      $this->addOption('culture', $this->_current_language());
+      $this->addMessage('format', 'Input has a wrong format: %value%');
   }
 
   /**
@@ -45,27 +43,21 @@ class sfValidatorI18nNumber extends sfValidatorNumber
    */
   protected function doClean($value)
   {
-    try 
-    {
-      $value = sfNumberFormatPlus::getNumber($value, $this->getOption('culture'));
-    }
-    catch (Exception $e)
-    {
-      //print_r($e);
-      throw new sfValidatorError($this, 'format', array('value' => $value));
-    }
-    return parent::doClean($value);
+      try {
+          $value = sfNumberFormatPlus::getNumber($value, $this->getOption('culture'));
+      } catch (Exception $e) {
+          throw new sfValidatorError($this, 'format', array('value' => $value));
+      }
+
+      return parent::doClean($value);
   }
 
-  function _current_language()
-  {
-    try 
+    public function _current_language()
     {
-      return sfContext::getInstance()->getUser()->getCulture();
+        try {
+            return sfContext::getInstance()->getUser()->getCulture();
+        } catch (Exception $e) {
+            return sfCultureInfo::getInstance()->getName();
+        }
     }
-    catch (Exception $e)
-    {
-      return sfCultureInfo::getInstance()->getName();
-    }
-  }
 }

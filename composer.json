@@ -16,6 +16,6 @@
     }
   ],
   "require": {
-    "composer/installers": "~1.0"
+    "friendsofsymfony1/symfony1-installer-plugin": "^1.0"
   }
 }

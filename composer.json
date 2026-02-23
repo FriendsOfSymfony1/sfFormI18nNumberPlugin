@@ -16,6 +16,7 @@
     }
   ],
   "require": {
+    "friendsofsymfony1/symfony1": "^1.5",
     "friendsofsymfony1/symfony1-installer-plugin": "^1.0"
   }
 }
